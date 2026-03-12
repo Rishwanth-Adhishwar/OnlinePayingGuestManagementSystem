@@ -1,0 +1,11 @@
+2026-03-10 15:10:48,937 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2026-03-10 15:16:00,213 [Worker-19: Creating project "online-paying-guest-management"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.TeamSJJR:online-paying-guest-management:0.0.1-SNAPSHOT @ D:\OnlinePayingGuestManagement\online-paying-guest-management\pom.xml.
+2026-03-10 15:16:00,664 [Worker-19: Creating project "online-paying-guest-management"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /online-paying-guest-management/src/main/java
+2026-03-10 15:16:00,666 [Worker-19: Creating project "online-paying-guest-management"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /online-paying-guest-management/src/main/resources
+2026-03-10 15:16:00,668 [Worker-19: Creating project "online-paying-guest-management"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /online-paying-guest-management/src/test/java
+2026-03-10 15:16:00,668 [Worker-19: Creating project "online-paying-guest-management"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /online-paying-guest-management/src/test/resources
+2026-03-10 15:16:01,219 [Worker-19: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2026-03-10 15:16:01,223 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2026-03-10 15:16:01,227 [Worker-19: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2026-03-10 15:16:01,228 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+2026-03-11 11:34:24,927 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
