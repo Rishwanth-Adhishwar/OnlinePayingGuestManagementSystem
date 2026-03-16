@@ -4,26 +4,6 @@ import com.guestmanagement.model.Room;
 
 public class RoomService {
 	
-	
-	
-	
-	
-	
-	public void viewAvailable() {
-	    boolean found = false;
-	    for (Room room : rooms) {
-	        if (room.isAvailability()) {
-	            System.out.println(room);
-	            found = true;
-	        }
-	    }
-	    if (!found) {
-	        System.out.println("Rooms not available");
-	    }
-	}
-
-
-
     Room[] rooms = {
         new Room(101, "Single", 8000, 1, true),
         new Room(102, "Double", 8000, 2, false),
