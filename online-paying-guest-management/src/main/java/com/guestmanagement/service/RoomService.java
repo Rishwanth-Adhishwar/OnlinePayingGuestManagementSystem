@@ -42,9 +42,9 @@ public class RoomService {
 
             System.out.println("Room ID: " + r.getRoomId());
             System.out.println("Room Type: " + r.getRoomType());
-            System.out.println("Price: " + r.getPrice());
+            System.out.println("Price: " + r.getRoomPrice());
             System.out.println("Capacity: " + r.getCapacity() + " persons");
-            System.out.println("Available: " + r.isAvailability());
+            System.out.println("Available: " + r.isAvailable());
             System.out.println("-----------------------");
         }
     }
@@ -56,11 +56,11 @@ public class RoomService {
 
         for (Room r : roomList) {
 
-            if (r.isAvailability()) {
+            if (r.isAvailable()) {
 
                 System.out.println("Room ID: " + r.getRoomId());
                 System.out.println("Room Type: " + r.getRoomType());
-                System.out.println("Price: " + r.getPrice());
+                System.out.println("Price: " + r.getRoomPrice());
                 System.out.println("Capacity: " + r.getCapacity() + " persons");
                 System.out.println("-----------------------");
             }
@@ -72,7 +72,7 @@ public class RoomService {
 
         for (Room r : roomList) {
 
-            if (r.isAvailability()) {
+            if (r.isAvailable()) {
                 System.out.println("Available Room ID: " + r.getRoomId());
             }
         }
@@ -85,7 +85,7 @@ public class RoomService {
 
         for (Room r : roomList) {
 
-            if (r.isAvailability()) {
+            if (r.isAvailable()) {
                 availableCount++;
             }
         }

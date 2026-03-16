@@ -1,81 +1,44 @@
 package com.guestmanagement.model;
 
 public class Room {
-	private int roomId;
-	private String roomType;
-	private double price;
-	private int capacity;
-	private boolean availability;
-	
-	
-	
-	public Room(int roomId, String roomType, double price, int capacity, boolean availability) {
-		this.roomId = roomId;
-		this.roomType = roomType;
-		this.price = price;
-		this.capacity = capacity;
-		this.availability = availability;
-	}
 
+    private int roomId;
+    private String roomType;
+    private double roomPrice;
+    private int capacity;
+    private boolean available;
 
+    // Constructor
+    public Room(int roomId, String roomType, double roomPrice, int capacity, boolean available) {
+        this.roomId = roomId;
+        this.roomType = roomType;
+        this.roomPrice = roomPrice;
+        this.capacity = capacity;
+        this.available = available;
+    }
 
-	public int getRoomId() {
-		return roomId;
-	}
+    // Getter methods
+    public int getRoomId() {
+        return roomId;
+    }
 
+    public String getRoomType() {
+        return roomType;
+    }
 
+    public double getRoomPrice() {
+        return roomPrice;
+    }
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
+    public int getCapacity() {
+        return capacity;
+    }
 
+    public boolean isAvailable() {
+        return available;
+    }
 
-
-	public String getRoomType() {
-		return roomType;
-	}
-
-
-
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
-	}
-
-
-
-	public double getPrice() {
-		return price;
-	}
-
-
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-
-
-
-	public boolean isAvailability() {
-		return availability;
-	}
-
-
-
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
-	}
-
-	
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 }
