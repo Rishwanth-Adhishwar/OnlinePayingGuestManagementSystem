@@ -38,7 +38,6 @@ public class Room {
         return available;
     }
 
-    // Setter method (optional but useful later)
     public void setAvailable(boolean available) {
         this.available = available;
     }
