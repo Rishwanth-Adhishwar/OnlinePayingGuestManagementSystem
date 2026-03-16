@@ -8,7 +8,7 @@ public class Room {
     private int capacity;
     private boolean available;
 
-    // Constructor
+    // Constructors1
     public Room(int roomId, String roomType, double roomPrice, int capacity, boolean available) {
         this.roomId = roomId;
         this.roomType = roomType;
