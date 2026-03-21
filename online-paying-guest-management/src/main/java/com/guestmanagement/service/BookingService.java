@@ -27,21 +27,23 @@ public class BookingService {
 		
 		boolean found = false;
 		
-		for (int i = 0; i < count; i++) {
+		for(int i = 0; i < count; i++){
 			
 			if(bookingId == booking[i].getBookingId()) {
 				
-				booking[i].setStatus(false);
 				found = true;
+				
+				if(booking[i].getStatus()) {
+					booking[i].cancelBooking();
+				}
+				else {
+					System.out.println("Already Cancelled.");
+				}
 				break;
 			}
 		}
-		
-		if(found)
-			System.out.println("Booking Cancelled.");
-		else
-			System.out.println("Booking ID not found");
-		
+		if(!found)
+			System.out.println("Booking ID not found.");
 	}
 	
 	public void viewBookingDetails(int bookingId) {
