@@ -3,69 +3,11 @@ package com.guestmanagement.service;
 import com.guestmanagement.model.Booking;
 
 public class BookingService {
-<<<<<<< HEAD
-	
-	Booking[] booking = new Booking[100];
-	
-	int count = 0;
-	
-	public void bookRoom(int roomId,int tenantId) {
-		
-		if (count >= booking.length) {
-			System.out.println("Booking storage full");
-			return;
-		}
-		
-		booking[count] = new Booking(tenantId, roomId);
-		
-		count++;
-		
-		System.out.println("Booking created successfully. Booking ID: " + booking[count-1].getBookingId());
-		
-	}
-	
-	public void cancelBooking(int bookingId) {
-		
-		boolean found = false;
-		
-		for(int i = 0; i < count; i++){
-			
-			if(bookingId == booking[i].getBookingId()) {
-				
-				found = true;
-				
-				if(booking[i].getStatus()) {
-					booking[i].cancelBooking();
-				}
-				else {
-					System.out.println("Already Cancelled.");
-				}
-				break;
-			}
-		}
-		if(!found)
-			System.out.println("Booking ID not found.");
-	}
-	
-	public void viewBookingDetails(int bookingId) {
-		
-		for (int i = 0; i < count; i++) {
-			
-			if(bookingId == booking[i].getBookingId()) {
-				
-				System.out.println(booking[i]);
-				return;
-			}
-		}
-		System.out.println("Booking ID not found");
-	}
-=======
->>>>>>> branch 'main' of https://github.com/Rishwanth-Adhishwar/OnlinePayingGuestManagementSystem.git
 
-    Booking[] booking = new Booking[100];
-    int count = 0;
+    private Booking[] booking = new Booking[100];
+    private int count = 0;
 
-    // Create Booking
+    // 🔴 Create Booking
     public void bookRoom(int roomId, int tenantId) {
 
         if (count >= booking.length) {
@@ -76,11 +18,11 @@ public class BookingService {
         booking[count] = new Booking(tenantId, roomId);
         count++;
 
-        System.out.println("Booking created successfully. Booking ID: " 
-                           + booking[count - 1].getBookingId());
+        System.out.println("Booking created successfully. Booking ID: "
+                + booking[count - 1].getBookingId());
     }
 
-    // Cancel Booking
+    // 🔴 Cancel Booking
     public void cancelBooking(int bookingId) {
 
         boolean found = false;
@@ -88,19 +30,25 @@ public class BookingService {
         for (int i = 0; i < count; i++) {
 
             if (bookingId == booking[i].getBookingId()) {
-                booking[i].setStatus(false);
+
                 found = true;
+
+                if (booking[i].isStatus()) {
+                    booking[i].cancelBooking();   
+                    System.out.println("Booking Cancelled.");
+                } else {
+                    System.out.println("Already Cancelled.");
+                }
                 break;
             }
         }
 
-        if (found)
-            System.out.println("Booking Cancelled.");
-        else
-            System.out.println("Booking ID not found");
+        if (!found) {
+            System.out.println("Booking ID not found.");
+        }
     }
 
-    // View Booking
+    // 🔴 View Booking
     public void viewBookingDetails(int bookingId) {
 
         for (int i = 0; i < count; i++) {
@@ -110,15 +58,16 @@ public class BookingService {
                 return;
             }
         }
+
         System.out.println("Booking ID not found");
     }
 
-    // NEW: Get all bookings
+    // 🔴 Get all bookings
     public Booking[] getAllBookings() {
         return booking;
     }
 
-    // NEW: Get count
+    // 🔴 Get count
     public int getBookingCount() {
         return count;
     }
