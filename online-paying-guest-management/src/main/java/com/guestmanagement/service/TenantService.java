@@ -72,4 +72,9 @@ public class TenantService {
 
         System.out.println("Tenant account deleted successfully.");
     }
+    
+ // Count Tenants
+    public int countTenants() {
+        return (tenantId != 0) ? 1 : 0;
+    }
 }

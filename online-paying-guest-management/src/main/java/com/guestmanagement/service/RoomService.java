@@ -95,4 +95,8 @@ public class RoomService {
         System.out.println("Available Rooms: " + availableCount);
         System.out.println("Occupied Rooms: " + (roomList.size() - availableCount));
     }
+ // Count Rooms
+    public int countRooms() {
+        return roomList.size();
+    }
 }
