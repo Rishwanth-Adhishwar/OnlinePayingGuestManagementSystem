@@ -1,0 +1,15 @@
+target/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+
+# Eclipse files
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
