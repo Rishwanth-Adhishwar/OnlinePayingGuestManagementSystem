@@ -9,6 +9,7 @@ public class MainApp {
         System.out.println("   PAYING GUEST MANAGEMENT SYSTEM  ");
         System.out.println("==================================");
 
+        System.out.println();
         int choice = -1;
         while (choice != 0) {
             System.out.println("\n--- MAIN MENU ---");
