@@ -1,6 +1,5 @@
 package com.guestmanagement.database;
 
-import com.guestmanagement.model.Message;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

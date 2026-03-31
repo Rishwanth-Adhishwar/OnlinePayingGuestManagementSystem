@@ -36,7 +36,7 @@ public class TenantMenu {
         String email = Input.readEmail("Email    : ");
 
         if (getTenantByEmail(email) != null) {
-            System.out.println("  Email already registered!");
+            System.out.println("Email already registered!");
             return;
         }
 
