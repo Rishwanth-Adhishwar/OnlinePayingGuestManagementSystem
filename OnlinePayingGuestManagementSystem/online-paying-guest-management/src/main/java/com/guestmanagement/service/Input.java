@@ -21,11 +21,12 @@ public class Input {
     
     public static String readText(String prompt) {
         System.out.print(prompt);
-        String text = sc.nextLine();
-        if (text.isEmpty()) {
-            text = sc.nextLine();
+        String text = sc.nextLine().trim();
+        while (text.isEmpty()) {
+            System.out.print(prompt);
+            text = sc.nextLine().trim();
         }
-        return text.trim();
+        return text;
     }
     
     public static String readEmail(String prompt) {
