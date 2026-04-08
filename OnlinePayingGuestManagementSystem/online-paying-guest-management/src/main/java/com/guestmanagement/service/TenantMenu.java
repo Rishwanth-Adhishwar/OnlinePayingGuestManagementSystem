@@ -11,10 +11,10 @@ public class TenantMenu {
     public static void show() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- TENANT PORTAL ---");
-            System.out.println("1. Register");
-            System.out.println("2. Login");
-            System.out.println("0. Back");
+            System.out.println("\n\uD83D\uDC64 \u2502\u2502\u2502 TENANT PORTAL \u2502\u2502\u2502");
+            System.out.println("\u2795 1. Register");
+            System.out.println("\uD83D\uDD10 2. Login");
+            System.out.println("\uD83D\uDEAA 0. Back");
             choice = Input.readInt("Enter choice: ");
 
             if (choice == 1)
@@ -24,19 +24,19 @@ public class TenantMenu {
                 if (currentTenant != null)
                     tenantMenu();
             } else if (choice == 0)
-                System.out.println("  Going back.");
+                System.out.println("  \uD83D\uDEAA Going back.");
             else
-                System.out.println("  Invalid choice.");
+                System.out.println("  \u26A0 Invalid choice.");
         }
     }
 
     static void register() {
-        System.out.println("\n--- Register ---");
+        System.out.println("\n\u2795 Tenant Registration");
         String name = Input.readText("Name     : ");
         String email = Input.readEmail("Email    : ");
 
         if (getTenantByEmail(email) != null) {
-            System.out.println("Email already registered!");
+            System.out.println("  \u26A0 Email already registered!");
             return;
         }
 
@@ -45,11 +45,11 @@ public class TenantMenu {
 
         Tenant t = new Tenant(0, name, email, pass, phone);
         TenantDB.insert(t);
-        System.out.println("  Registered successfully!");
+        System.out.println("  \u2705 Registered successfully!");
     }
 
     static void login() {
-        System.out.println("\n--- Tenant Login ---");
+        System.out.println("\n\uD83D\uDD10 Tenant Login");
         String email = Input.readEmail("Email    : ");
         String pass = Input.readText("Password : ");
 
@@ -57,11 +57,11 @@ public class TenantMenu {
         for (Tenant t : list) {
             if (t.email.equals(email) && t.password.equals(pass)) {
                 currentTenant = t;
-                System.out.println("  Welcome, " + t.name + "!");
+                System.out.println("  \u2705 Welcome, " + t.name + "!");
                 return;
             }
         }
-        System.out.println("  Wrong email or password.");
+        System.out.println("  \u274C Wrong email or password.");
         currentTenant = null;
     }
 
@@ -78,13 +78,13 @@ public class TenantMenu {
     static void tenantMenu() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- TENANT MENU (" + currentTenant.name + ") ---");
-            System.out.println("1. View Available Rooms");
-            System.out.println("2. Book a Room");
-            System.out.println("3. Pay Rent");
-            System.out.println("4. Send Message to Admin");
-            System.out.println("5. My Bookings");
-            System.out.println("0. Logout");
+            System.out.println("\n\uD83C\uDFE0 \u2502\u2502\u2502 TENANT MENU (" + currentTenant.name + ") \u2502\u2502\u2502");
+            System.out.println("\uD83D\uDC41 1. View Available Rooms");
+            System.out.println("\uD83D\uDCC5 2. Book a Room");
+            System.out.println("\uD83D\uDCB8 3. Pay Rent");
+            System.out.println("\uD83D\uDCE7 4. Send Message to Admin");
+            System.out.println("\uD83D\uDCCB 5. My Bookings");
+            System.out.println("\uD83D\uDEAA 0. Logout");
             choice = Input.readInt("Enter choice: ");
 
             if (choice == 1)
@@ -98,15 +98,15 @@ public class TenantMenu {
             else if (choice == 5)
                 myBookings();
             else if (choice == 0)
-                System.out.println("  Goodbye, " + currentTenant.name + "!");
+                System.out.println("  \uD83D\uDE4B Goodbye, " + currentTenant.name + "!");
             else
-                System.out.println("  Invalid choice.");
+                System.out.println("  \u26A0 Invalid choice.");
         }
         currentTenant = null;
     }
 
     static void viewAvailableRooms() {
-        System.out.println("  --- Available Rooms ---");
+        System.out.println("\n\uD83D\uDC41 Available Rooms");
         ArrayList<Room> list = RoomDB.getAll();
         boolean found = false;
         for (Room r : list) {
@@ -116,7 +116,7 @@ public class TenantMenu {
             }
         }
         if (!found)
-            System.out.println("  No rooms available right now.");
+            System.out.println("  \uD83D\uDCC2 No rooms available right now.");
     }
 
     static void bookRoom() {
@@ -128,11 +128,11 @@ public class TenantMenu {
         Room chosen = RoomDB.searchById(roomId);
 
         if (chosen == null) {
-            System.out.println("  Room not found!");
+            System.out.println("  \u26A0 Room not found!");
             return;
         }
         if (!chosen.available) {
-            System.out.println("  Room is already booked!");
+            System.out.println("  \u274C Room is already booked!");
             return;
         }
 
@@ -142,7 +142,7 @@ public class TenantMenu {
         chosen.available = false;
         RoomDB.update(chosen);
 
-        System.out.println("  Booked! Room:" + chosen.roomNo + " | Rs." + chosen.rent + "/month");
+        System.out.println("  \u2705 Booked! Room: " + chosen.roomNo + " | Rs." + chosen.rent + "/month");
     }
 
     static void makePayment() {
@@ -162,7 +162,7 @@ public class TenantMenu {
         }
 
         if (booking == null) {
-            System.out.println("  Booking not found!");
+            System.out.println("  \u26A0 Booking not found!");
             return;
         }
 
@@ -171,7 +171,7 @@ public class TenantMenu {
 
         Payment p = new Payment(0, bookingId, rent, mode, date);
         PaymentDB.insert(p);
-        System.out.println("  Payment successful! Rs." + rent + " via " + mode);
+        System.out.println("  \u2705 Payment successful! Rs." + rent + " via " + mode);
     }
 
     static void sendMessage() {
@@ -180,11 +180,11 @@ public class TenantMenu {
 
         MessageDB m = new MessageDB(0, currentTenant.id, 1, text, date);
         MessageDB.insert(m);
-        System.out.println("  Message sent to admin!");
+        System.out.println("  \u2705 Message sent to admin!");
     }
 
     static void myBookings() {
-        System.out.println("  --- My Bookings ---");
+        System.out.println("\n\uD83D\uDCCB My Bookings");
         ArrayList<Booking> list = BookingDB.getAll();
         boolean found = false;
         for (Booking b : list) {
@@ -194,6 +194,6 @@ public class TenantMenu {
             }
         }
         if (!found)
-            System.out.println("  You have no bookings yet.");
+            System.out.println("  \uD83D\uDCC5 You have no bookings yet.");
     }
 }
