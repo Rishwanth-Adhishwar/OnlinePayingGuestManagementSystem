@@ -9,7 +9,7 @@ public class Input {
 	public static int readInt(String prompt) {
 		System.out.print(prompt);
 		while (!sc.hasNextInt()) {
-			System.out.println("  Enter a valid number!");
+			System.out.println("  \u26A0 Enter a valid number!");
 			sc.next();
 			System.out.print(prompt);
 		}
@@ -30,13 +30,13 @@ public class Input {
 			System.out.print(prompt);
 			String email = sc.nextLine().trim();
 			if (email.isEmpty()) {
-				System.out.println("  Email cannot be empty!");
+				System.out.println("  \u26A0 Email cannot be empty!");
 				continue;
 			}
 			if (email.contains("@") && email.contains(".")) {
 				return email;
 			}
-			System.out.println("  Enter a valid email!");
+			System.out.println("  \u26A0 Enter a valid email!");
 		}
 	}
 
@@ -47,7 +47,7 @@ public class Input {
 			if (phone.length() == 10 && phone.matches("[0-9]+")) {
 				return phone;
 			}
-			System.out.println("  Phone must be 10 digits!");
+			System.out.println("  \u26A0 Phone must be 10 digits!");
 		}
 	}
 
@@ -58,14 +58,14 @@ public class Input {
 			if (pass.length() >= 4) {
 				return pass;
 			}
-			System.out.println("  Password must be at least 4 characters!");
+			System.out.println("  \u26A0 Password must be at least 4 characters!");
 		}
 	}
 
 	public static double readDouble(String prompt) {
 		System.out.print(prompt);
 		while (!sc.hasNextDouble()) {
-			System.out.println("  Enter a valid number!");
+			System.out.println("  \u26A0 Enter a valid number!");
 			sc.next();
 			System.out.print(prompt);
 		}
