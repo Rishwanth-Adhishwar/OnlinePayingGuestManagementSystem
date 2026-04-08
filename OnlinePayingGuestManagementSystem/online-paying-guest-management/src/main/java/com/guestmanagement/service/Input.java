@@ -26,20 +26,22 @@ public class Input {
 		return text.trim();
 	}
 
-	public static String readEmail(String prompt) {
-		while (true) {
-			System.out.print(prompt);
-			String email = sc.nextLine().trim();
-			if (email.isEmpty()) {
-				System.out.println("  \u26A0 Email cannot be empty!");
-				continue;
-			}
-			if (email.contains("@") && email.contains(".")) {
-				return email;
-			}
-			System.out.println("  \u26A0 Enter a valid email!");
-		}
-	}
+	 public static String readEmail(String prompt) {
+	        while (true) {
+	            System.out.print(prompt);
+	            String email = sc.nextLine().trim();
+
+	            if (email.isEmpty()) {
+	                System.out.println("\u26A0\uFE0F Email cannot be empty!");
+	            } 
+	            else if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+	                System.out.println(" \u26A0  Invalid email format!");
+	            } 
+	            else {
+	                return email;
+	            }
+	        }
+	    }
 
 	public static String readPhone(String prompt) {
 		while (true) {
@@ -53,15 +55,30 @@ public class Input {
 	}
 
 	public static String readPassword(String prompt) {
-		while (true) {
-			System.out.print(prompt);
-			String pass = new String(System.console().readPassword());
-			if (pass.length() >= 4) {
-				return pass;
-			}
-			System.out.println("  \u26A0 Password must be at least 4 characters!");
-		}
-	}
+        while (true) {
+            System.out.print(prompt);
+
+            String password;
+            if (System.console() != null) {
+                password = new String(System.console().readPassword());
+            } else {
+                password = sc.nextLine(); 
+            }
+
+            if (password.length() < 4) {
+                System.out.println(" \u26A0 Password must be at least 4 characters!");
+            } 
+            else if (!password.matches(".*[A-Z].*")) {
+                System.out.println(" \u26A0 Must contain at least one uppercase letter!");
+            } 
+            else if (!password.matches(".*\\d.*")) {
+                System.out.println(" \u26A0 Must contain at least one number!");
+            } 
+            else {
+                return password;
+            }
+        }
+    }
 
 	public static double readDouble(String prompt) {
 		System.out.print(prompt);
