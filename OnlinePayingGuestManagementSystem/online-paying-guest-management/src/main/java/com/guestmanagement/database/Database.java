@@ -10,7 +10,7 @@ public class Database {
     public static String PORT = "3306";
     public static String DATABASE = "guest_db";
     public static String USER = "root";
-    public static String PASSWORD = "Rishwa16.";
+    public static String PASSWORD = "root";
     
     public static Connection connect() {
         Connection conn = null;
