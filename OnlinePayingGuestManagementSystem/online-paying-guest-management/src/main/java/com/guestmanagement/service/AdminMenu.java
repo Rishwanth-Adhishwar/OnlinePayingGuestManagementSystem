@@ -11,9 +11,9 @@ public class AdminMenu {
     public static void show() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- ADMIN PORTAL ---");
-            System.out.println("1. Login");
-            System.out.println("0. Back");
+            System.out.println("\n\uD83D\uDCBB \u2502\u2502\u2502 ADMIN PORTAL \u2502\u2502\u2502");
+            System.out.println("\uD83D\uDC64 1. Login");
+            System.out.println("\uD83D\uDEAA 0. Back");
             choice = Input.readInt("Enter choice: ");
 
             if (choice == 1) {
@@ -21,38 +21,38 @@ public class AdminMenu {
                 if (currentAdmin != null)
                     adminMenu();
             } else if (choice == 0) {
-                System.out.println("  Going back.");
+                System.out.println("  \uD83D\uDEAA Going back.");
             } else {
-                System.out.println("  Invalid choice.");
+                System.out.println("  \u26A0 Invalid choice.");
             }
         }
     }
 
     static void login() {
-        System.out.println("\n--- Admin Login ---");
+        System.out.println("\n\uD83D\uDD10 Admin Login");
         String email = Input.readText("Email    : ");
         String pass = Input.readText("Password : ");
 
         currentAdmin = AdminDB.login(email, pass);
         if (currentAdmin != null) {
-            System.out.println("  Welcome, " + currentAdmin.name + "!");
+            System.out.println("  \u2705 Welcome, " + currentAdmin.name + "!");
         } else {
-            System.out.println("  Wrong email or password.");
+            System.out.println("  \u274C Wrong email or password.");
         }
     }
 
     static void adminMenu() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- ADMIN MENU (" + currentAdmin.name + ") ---");
-            System.out.println("1. Manage Properties");
-            System.out.println("2. Manage Rooms");
-            System.out.println("3. View Tenants");
-            System.out.println("4. View Bookings");
-            System.out.println("5. View Payments");
-            System.out.println("6. View Messages");
-            System.out.println("7. View All Data");
-            System.out.println("0. Logout");
+            System.out.println("\n\uD83C\uDFE6 \u2502\u2502\u2502 ADMIN MENU (" + currentAdmin.name + ") \u2502\u2502\u2502");
+            System.out.println("\uD83C\uDFE0 1. Manage Properties");
+            System.out.println("\uD83D\uDCB0 2. Manage Rooms");
+            System.out.println("\uD83D\uDC64 3. View Tenants");
+            System.out.println("\uD83D\uDCC5 4. View Bookings");
+            System.out.println("\uD83D\uDCB8 5. View Payments");
+            System.out.println("\uD83D\uDCE7 6. View Messages");
+            System.out.println("\uD83D\uDCCB 7. View All Data");
+            System.out.println("\uD83D\uDEAA 0. Logout");
             choice = Input.readInt("Enter choice: ");
 
             switch (choice) {
@@ -63,8 +63,8 @@ public class AdminMenu {
                 case 5: viewPayments(); break;
                 case 6: viewMessages(); break;
                 case 7: viewAllData(); break;
-                case 0: System.out.println("  Goodbye, " + currentAdmin.name + "!"); break;
-                default: System.out.println("  Invalid choice.");
+                case 0: System.out.println("  \uD83D\uDE4B Goodbye, " + currentAdmin.name + "!"); break;
+                default: System.out.println("  \u26A0 Invalid choice.");
             }
         }
         currentAdmin = null;
@@ -73,37 +73,38 @@ public class AdminMenu {
     static void manageProperties() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- MANAGE PROPERTIES ---");
-            System.out.println("1. Add Property");
-            System.out.println("2. View Properties");
-            System.out.println("3. Update Property");
-            System.out.println("4. Delete Property");
-            System.out.println("0. Back");
+            System.out.println("\n\uD83C\uDFE0 MANAGE PROPERTIES");
+            System.out.println("\u2795 1. Add Property");
+            System.out.println("\uD83D\uDC41 2. View Properties");
+            System.out.println("\u270F 3. Update Property");
+            System.out.println("\uD83D\uDDD1 4. Delete Property");
+            System.out.println("\uD83D\uDEAA 0. Back");
             choice = Input.readInt("Enter choice: ");
 
             if (choice == 1) addProperty();
             else if (choice == 2) viewProperties();
             else if (choice == 3) updateProperty();
             else if (choice == 4) deleteProperty();
-            else if (choice != 0) System.out.println("  Invalid choice.");
+            else if (choice != 0) System.out.println("  \u26A0 Invalid choice.");
         }
     }
 
     static void addProperty() {
-        System.out.println("\n--- Add Property ---");
+        System.out.println("\n\u2795 Add Property");
         String name = Input.readText("Name     : ");
         String location = Input.readText("Location : ");
         String owner = Input.readText("Owner    : ");
         
         Property p = new Property(0, name, location, owner);
         PropertyDB.insert(p);
+        System.out.println("  \u2705 Property added successfully!");
     }
 
     static void viewProperties() {
-        System.out.println("\n--- All Properties ---");
+        System.out.println("\n\uD83D\uDC41 All Properties");
         ArrayList<Property> list = PropertyDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No properties found.");
+            System.out.println("  \uD83D\uDCC1 No properties found.");
         }
         for (Property p : list) {
             System.out.println("  " + p);
@@ -116,7 +117,7 @@ public class AdminMenu {
         Property p = PropertyDB.searchById(id);
         
         if (p == null) {
-            System.out.println("  Property not found!");
+            System.out.println("  \u26A0 Property not found!");
             return;
         }
         
@@ -130,35 +131,37 @@ public class AdminMenu {
         if (!owner.isEmpty()) p.owner = owner;
         
         PropertyDB.update(p);
+        System.out.println("  \u2705 Property updated successfully!");
     }
 
     static void deleteProperty() {
         viewProperties();
         int id = Input.readInt("Property ID to delete : ");
         PropertyDB.delete(id);
+        System.out.println("  \uD83D\uDDD1 Property deleted!");
     }
 
     static void manageRooms() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("\n--- MANAGE ROOMS ---");
-            System.out.println("1. Add Room");
-            System.out.println("2. View Rooms");
-            System.out.println("3. Update Room");
-            System.out.println("4. Delete Room");
-            System.out.println("0. Back");
+            System.out.println("\n\uD83D\uDCB0 MANAGE ROOMS");
+            System.out.println("\u2795 1. Add Room");
+            System.out.println("\uD83D\uDC41 2. View Rooms");
+            System.out.println("\u270F 3. Update Room");
+            System.out.println("\uD83D\uDDD1 4. Delete Room");
+            System.out.println("\uD83D\uDEAA 0. Back");
             choice = Input.readInt("Enter choice: ");
 
             if (choice == 1) addRoom();
             else if (choice == 2) viewRooms();
             else if (choice == 3) updateRoom();
             else if (choice == 4) deleteRoom();
-            else if (choice != 0) System.out.println("  Invalid choice.");
+            else if (choice != 0) System.out.println("  \u26A0 Invalid choice.");
         }
     }
 
     static void addRoom() {
-        System.out.println("\n--- Add Room ---");
+        System.out.println("\n\u2795 Add Room");
         viewProperties();
         int propertyId = Input.readInt("Property ID : ");
         String roomNo = Input.readText("Room No    : ");
@@ -167,13 +170,14 @@ public class AdminMenu {
         
         Room r = new Room(0, propertyId, roomNo, type, rent);
         RoomDB.insert(r);
+        System.out.println("  \u2705 Room added successfully!");
     }
 
     static void viewRooms() {
-        System.out.println("\n--- All Rooms ---");
+        System.out.println("\n\uD83D\uDC41 All Rooms");
         ArrayList<Room> list = RoomDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No rooms found.");
+            System.out.println("  \uD83D\uDCC2 No rooms found.");
         }
         for (Room r : list) {
             System.out.println("  " + r);
@@ -186,7 +190,7 @@ public class AdminMenu {
         Room r = RoomDB.searchById(id);
         
         if (r == null) {
-            System.out.println("  Room not found!");
+            System.out.println("  \u26A0 Room not found!");
             return;
         }
         
@@ -202,19 +206,21 @@ public class AdminMenu {
         if (!availStr.isEmpty()) r.available = Boolean.parseBoolean(availStr);
         
         RoomDB.update(r);
+        System.out.println("  \u2705 Room updated successfully!");
     }
 
     static void deleteRoom() {
         viewRooms();
         int id = Input.readInt("Room ID to delete : ");
         RoomDB.delete(id);
+        System.out.println("  \uD83D\uDDD1 Room deleted!");
     }
 
     static void viewTenants() {
-        System.out.println("\n--- All Tenants ---");
+        System.out.println("\n\uD83D\uDC64 All Tenants");
         ArrayList<Tenant> list = TenantDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No tenants found.");
+            System.out.println("  \uD83D\uDCDD No tenants found.");
         }
         for (Tenant t : list) {
             System.out.println("  " + t);
@@ -222,10 +228,10 @@ public class AdminMenu {
     }
 
     static void viewBookings() {
-        System.out.println("\n--- All Bookings ---");
+        System.out.println("\n\uD83D\uDCC5 All Bookings");
         ArrayList<Booking> list = BookingDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No bookings found.");
+            System.out.println("  \uD83D\uDCC5 No bookings found.");
         }
         for (Booking b : list) {
             System.out.println("  " + b);
@@ -233,10 +239,10 @@ public class AdminMenu {
     }
 
     static void viewPayments() {
-        System.out.println("\n--- All Payments ---");
+        System.out.println("\n\uD83D\uDCB8 All Payments");
         ArrayList<Payment> list = PaymentDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No payments found.");
+            System.out.println("  \uD83D\uDCB8 No payments found.");
         }
         for (Payment p : list) {
             System.out.println("  " + p);
@@ -244,10 +250,10 @@ public class AdminMenu {
     }
 
     static void viewMessages() {
-        System.out.println("\n--- All Messages ---");
+        System.out.println("\n\uD83D\uDCE7 All Messages");
         ArrayList<MessageDB> list = MessageDB.getAll();
         if (list.isEmpty()) {
-            System.out.println("  No messages found.");
+            System.out.println("  \uD83D\uDCE7 No messages found.");
         }
         for (MessageDB m : list) {
             System.out.println("  " + m);
@@ -255,13 +261,13 @@ public class AdminMenu {
     }
 
     static void viewAllData() {
-        System.out.println("\n========== ALL DATA ==========");
+        System.out.println("\n\u2B50========== ALL DATA ==========\u2B50");
         viewProperties();
         viewRooms();
         viewTenants();
         viewBookings();
         viewPayments();
         viewMessages();
-        System.out.println("==============================");
+        System.out.println("\u2B50==============================\u2B50");
     }
 }
