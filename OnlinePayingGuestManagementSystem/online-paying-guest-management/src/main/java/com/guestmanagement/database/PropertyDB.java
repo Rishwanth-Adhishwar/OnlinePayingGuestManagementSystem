@@ -1,5 +1,19 @@
 package com.guestmanagement.database;
 
+/**
+ * ============================================================
+ * Author : __________________________
+ * ============================================================
+ *
+ * Description :
+ * This class is used to manage all property-related database
+ * operations in the Paying Guest Management System.
+ * It includes insert, view, update, delete,
+ * and search property operations.
+ *
+ * ============================================================
+ */
+
 import com.guestmanagement.model.Property;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +21,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Class
 public class PropertyDB {
     
+    // Static method / Insert operation
     public static void insert(Property p) {
         Connection conn = Database.connect();
         String sql = "INSERT INTO property (name, location, owner) VALUES (?, ?, ?)";
@@ -21,12 +37,14 @@ public class PropertyDB {
             pst.executeUpdate();
             System.out.println("Property Added!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Fetch all properties
     public static ArrayList<Property> getAll() {
         ArrayList<Property> list = new ArrayList<>();
         Connection conn = Database.connect();
@@ -37,6 +55,7 @@ public class PropertyDB {
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
+                // Object creation
                 Property p = new Property(
                     rs.getInt("id"),
                     rs.getString("name"),
@@ -46,6 +65,7 @@ public class PropertyDB {
                 list.add(p);
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
@@ -53,6 +73,7 @@ public class PropertyDB {
         return list;
     }
     
+    // Static method / Update operation
     public static void update(Property p) {
         Connection conn = Database.connect();
         String sql = "UPDATE property SET name=?, location=?, owner=? WHERE id=?";
@@ -66,12 +87,14 @@ public class PropertyDB {
             pst.executeUpdate();
             System.out.println("Property Updated!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
         String sql = "DELETE FROM property WHERE id=?";
@@ -82,16 +105,18 @@ public class PropertyDB {
             pst.executeUpdate();
             System.out.println("Property Deleted!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Search by ID
     public static Property searchById(int id) {
         Connection conn = Database.connect();
         String sql = "SELECT * FROM property WHERE id=?";
-        Property p = null;
+        Property p = null; // Object reference
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -99,6 +124,7 @@ public class PropertyDB {
             ResultSet rs = pst.executeQuery();
             
             if (rs.next()) {
+                // Object creation
                 p = new Property(
                     rs.getInt("id"),
                     rs.getString("name"),
@@ -107,6 +133,7 @@ public class PropertyDB {
                 );
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);

@@ -1,5 +1,18 @@
 package com.guestmanagement.database;
 
+/**
+ * ============================================================
+ * Author : __________________________
+ * ============================================================
+ *
+ * Description :
+ * This class is used to manage all booking-related database
+ * operations in the Paying Guest Management System.
+ * It includes insert, view, update, delete, and search operations.
+ *
+ * ============================================================
+ */
+
 import com.guestmanagement.model.Booking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +20,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Class
 public class BookingDB {
     
+    // Static method / Insert operation
     public static void insert(Booking b) {
         Connection conn = Database.connect();
         String sql = "INSERT INTO booking (tenant_id, room_id, date) VALUES (?, ?, ?)";
@@ -21,12 +36,14 @@ public class BookingDB {
             pst.executeUpdate();
             System.out.println("Booking Added!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Fetch all records
     public static ArrayList<Booking> getAll() {
         ArrayList<Booking> list = new ArrayList<>();
         Connection conn = Database.connect();
@@ -37,6 +54,7 @@ public class BookingDB {
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
+                // Object creation
                 Booking b = new Booking(
                     rs.getInt("id"),
                     rs.getInt("tenant_id"),
@@ -46,6 +64,7 @@ public class BookingDB {
                 list.add(b);
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
@@ -53,6 +72,7 @@ public class BookingDB {
         return list;
     }
     
+    // Static method / Update operation
     public static void update(Booking b) {
         Connection conn = Database.connect();
         String sql = "UPDATE booking SET tenant_id=?, room_id=?, date=? WHERE id=?";
@@ -66,12 +86,14 @@ public class BookingDB {
             pst.executeUpdate();
             System.out.println("Booking Updated!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
         String sql = "DELETE FROM booking WHERE id=?";
@@ -82,16 +104,18 @@ public class BookingDB {
             pst.executeUpdate();
             System.out.println("Booking Deleted!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Search operation
     public static Booking searchById(int id) {
         Connection conn = Database.connect();
         String sql = "SELECT * FROM booking WHERE id=?";
-        Booking b = null;
+        Booking b = null; // Object reference
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -99,6 +123,7 @@ public class BookingDB {
             ResultSet rs = pst.executeQuery();
             
             if (rs.next()) {
+                // Object creation
                 b = new Booking(
                     rs.getInt("id"),
                     rs.getInt("tenant_id"),
@@ -107,6 +132,7 @@ public class BookingDB {
                 );
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
