@@ -1,5 +1,19 @@
 package com.guestmanagement.database;
 
+/**
+ * ============================================================
+ * Author : __________________________
+ * ============================================================
+ *
+ * Description :
+ * This class is used to manage all room-related database
+ * operations in the Paying Guest Management System.
+ * It includes insert, view, update, delete,
+ * and search room operations.
+ *
+ * ============================================================
+ */
+
 import com.guestmanagement.model.Room;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,11 +21,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Class
 public class RoomDB {
     
+    // Static method / Insert operation
     public static void insert(Room r) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO room (property_id, room_no, type, rent, available) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO rooms (property_id, room_no, type, rent, available) VALUES (?, ?, ?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -23,22 +39,25 @@ public class RoomDB {
             pst.executeUpdate();
             System.out.println("Room Added!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Fetch all rooms
     public static ArrayList<Room> getAll() {
         ArrayList<Room> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM room";
+        String sql = "SELECT * FROM rooms";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) {
+                // Object creation
                 Room r = new Room(
                     rs.getInt("id"),
                     rs.getInt("property_id"),
@@ -46,10 +65,13 @@ public class RoomDB {
                     rs.getString("type"),
                     rs.getDouble("rent")
                 );
+                
+                // Setting additional property
                 r.available = rs.getBoolean("available");
                 list.add(r);
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
@@ -57,9 +79,10 @@ public class RoomDB {
         return list;
     }
     
+    // Static method / Update operation
     public static void update(Room r) {
         Connection conn = Database.connect();
-        String sql = "UPDATE room SET property_id=?, room_no=?, type=?, rent=?, available=? WHERE id=?";
+        String sql = "UPDATE rooms SET property_id=?, room_no=?, type=?, rent=?, available=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -72,15 +95,17 @@ public class RoomDB {
             pst.executeUpdate();
             System.out.println("Room Updated!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM room WHERE id=?";
+        String sql = "DELETE FROM rooms WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -88,16 +113,18 @@ public class RoomDB {
             pst.executeUpdate();
             System.out.println("Room Deleted!");
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
         }
     }
     
+    // Static method / Search by ID
     public static Room searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM room WHERE id=?";
-        Room r = null;
+        String sql = "SELECT * FROM rooms WHERE id=?";
+        Room r = null; // Object reference
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -105,6 +132,7 @@ public class RoomDB {
             ResultSet rs = pst.executeQuery();
             
             if (rs.next()) {
+                // Object creation
                 r = new Room(
                     rs.getInt("id"),
                     rs.getInt("property_id"),
@@ -112,9 +140,12 @@ public class RoomDB {
                     rs.getString("type"),
                     rs.getDouble("rent")
                 );
+                
+                // Setting additional property
                 r.available = rs.getBoolean("available");
             }
         } catch (SQLException e) {
+            // Exception Handling
             e.printStackTrace();
         } finally {
             Database.disconnect(conn);
