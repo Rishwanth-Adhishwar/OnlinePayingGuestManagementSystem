@@ -42,7 +42,7 @@ public class AdminDB {
     // Static method / Abstraction
     public static void insert(AdminDB a) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM admin WHERE username=? AND password=?";
+        String sql = "INSERT INTO admin(name,email,password) VALUES(?,?,?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
