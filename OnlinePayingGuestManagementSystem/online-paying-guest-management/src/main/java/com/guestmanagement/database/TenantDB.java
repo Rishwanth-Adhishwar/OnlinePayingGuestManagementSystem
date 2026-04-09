@@ -27,7 +27,7 @@ public class TenantDB {
     // Static method / Insert operation
     public static void insert(Tenant t) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO tenant (name, email, password, phone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tenants (name, email, password, phone) VALUES (?, ?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class TenantDB {
     public static ArrayList<Tenant> getAll() {
         ArrayList<Tenant> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM tenant";
+        String sql = "SELECT * FROM tenants";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class TenantDB {
     // Static method / Update operation
     public static void update(Tenant t) {
         Connection conn = Database.connect();
-        String sql = "UPDATE tenant SET name=?, email=?, password=?, phone=? WHERE id=?";
+        String sql = "UPDATE tenants SET name=?, email=?, password=?, phone=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class TenantDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM tenant WHERE id=?";
+        String sql = "DELETE FROM tenants WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class TenantDB {
     // Static method / Search by ID
     public static Tenant searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM tenant WHERE id=?";
+        String sql = "SELECT * FROM tenants WHERE id=?";
         Tenant t = null; // Object reference
         
         try {

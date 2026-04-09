@@ -27,7 +27,7 @@ public class PropertyDB {
     // Static method / Insert operation
     public static void insert(Property p) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO property (name, location, owner) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO properties (name, location, owner) VALUES (?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class PropertyDB {
     public static ArrayList<Property> getAll() {
         ArrayList<Property> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM property";
+        String sql = "SELECT * FROM properties";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -76,7 +76,7 @@ public class PropertyDB {
     // Static method / Update operation
     public static void update(Property p) {
         Connection conn = Database.connect();
-        String sql = "UPDATE property SET name=?, location=?, owner=? WHERE id=?";
+        String sql = "UPDATE properties SET name=?, location=?, owner=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class PropertyDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM property WHERE id=?";
+        String sql = "DELETE FROM properties WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class PropertyDB {
     // Static method / Search by ID
     public static Property searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM property WHERE id=?";
+        String sql = "SELECT * FROM properties WHERE id=?";
         Property p = null; // Object reference
         
         try {

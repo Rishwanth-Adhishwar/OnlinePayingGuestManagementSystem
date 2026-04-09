@@ -27,7 +27,7 @@ public class RoomDB {
     // Static method / Insert operation
     public static void insert(Room r) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO room (property_id, room_no, type, rent, available) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO rooms (property_id, room_no, type, rent, available) VALUES (?, ?, ?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class RoomDB {
     public static ArrayList<Room> getAll() {
         ArrayList<Room> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM room";
+        String sql = "SELECT * FROM rooms";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class RoomDB {
     // Static method / Update operation
     public static void update(Room r) {
         Connection conn = Database.connect();
-        String sql = "UPDATE room SET property_id=?, room_no=?, type=?, rent=?, available=? WHERE id=?";
+        String sql = "UPDATE rooms SET property_id=?, room_no=?, type=?, rent=?, available=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class RoomDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM room WHERE id=?";
+        String sql = "DELETE FROM rooms WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class RoomDB {
     // Static method / Search by ID
     public static Room searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM room WHERE id=?";
+        String sql = "SELECT * FROM rooms WHERE id=?";
         Room r = null; // Object reference
         
         try {

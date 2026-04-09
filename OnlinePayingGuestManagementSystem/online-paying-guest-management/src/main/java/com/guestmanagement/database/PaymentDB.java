@@ -27,7 +27,7 @@ public class PaymentDB {
     // Static method / Insert operation
     public static void insert(Payment p) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO payment (booking_id, amount, mode, date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO payments (booking_id, amount, mode, date) VALUES (?, ?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class PaymentDB {
     public static ArrayList<Payment> getAll() {
         ArrayList<Payment> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM payment";
+        String sql = "SELECT * FROM payments";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class PaymentDB {
     // Static method / Update operation
     public static void update(Payment p) {
         Connection conn = Database.connect();
-        String sql = "UPDATE payment SET booking_id=?, amount=?, mode=?, date=? WHERE id=?";
+        String sql = "UPDATE payments SET booking_id=?, amount=?, mode=?, date=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class PaymentDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM payment WHERE id=?";
+        String sql = "DELETE FROM payments WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class PaymentDB {
     // Static method / Search by ID
     public static Payment searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM payment WHERE id=?";
+        String sql = "SELECT * FROM payments WHERE id=?";
         Payment p = null; // Object reference
         
         try {
