@@ -48,7 +48,7 @@ public class MessageDB {
     // Static method / Insert operation
     public static void insert(MessageDB m) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO message (sender_id, receiver_id, message, date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO messages (sender_id, receiver_id, message, date) VALUES (?, ?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class MessageDB {
     public static ArrayList<MessageDB> getAll() {
         ArrayList<MessageDB> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM message";
+        String sql = "SELECT * FROM messages";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class MessageDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM message WHERE id=?";
+        String sql = "DELETE FROM messages WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class MessageDB {
     public static ArrayList<MessageDB> getByReceiver(int receiverId) {
         ArrayList<MessageDB> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM message WHERE receiver_id=?";
+        String sql = "SELECT * FROM messages WHERE receiver_id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
