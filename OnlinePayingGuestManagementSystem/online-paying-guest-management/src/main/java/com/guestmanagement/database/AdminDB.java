@@ -42,7 +42,7 @@ public class AdminDB {
     // Static method / Abstraction
     public static void insert(AdminDB a) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM admin WHERE username=? AND password=?";
+        String sql = "SELECT * FROM admins WHERE username=? AND password=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class AdminDB {
     // Static method / Login functionality
     public static AdminDB login(String email, String password) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM admin WHERE email=? AND password=?";
+        String sql = "SELECT * FROM admins WHERE email=? AND password=?";
         AdminDB admin = null; // Object reference
         
         try {
@@ -92,7 +92,7 @@ public class AdminDB {
     // Static method / Update operation
     public static void update(AdminDB a) {
         Connection conn = Database.connect();
-        String sql = "UPDATE admin SET name=?, email=?, password=? WHERE id=?";
+        String sql = "UPDATE admins SET name=?, email=?, password=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class AdminDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM admin WHERE id=?";
+        String sql = "DELETE FROM admins WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

@@ -26,7 +26,7 @@ public class BookingDB {
     // Static method / Insert operation
     public static void insert(Booking b) {
         Connection conn = Database.connect();
-        String sql = "INSERT INTO booking (tenant_id, room_id, date) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO bookings (tenant_id, room_id, date) VALUES (?, ?, ?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class BookingDB {
     public static ArrayList<Booking> getAll() {
         ArrayList<Booking> list = new ArrayList<>();
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM booking";
+        String sql = "SELECT * FROM bookings";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class BookingDB {
     // Static method / Update operation
     public static void update(Booking b) {
         Connection conn = Database.connect();
-        String sql = "UPDATE booking SET tenant_id=?, room_id=?, date=? WHERE id=?";
+        String sql = "UPDATE bookings SET tenant_id=?, room_id=?, date=? WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class BookingDB {
     // Static method / Delete operation
     public static void delete(int id) {
         Connection conn = Database.connect();
-        String sql = "DELETE FROM booking WHERE id=?";
+        String sql = "DELETE FROM bookings WHERE id=?";
         
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -114,7 +114,7 @@ public class BookingDB {
     // Static method / Search operation
     public static Booking searchById(int id) {
         Connection conn = Database.connect();
-        String sql = "SELECT * FROM booking WHERE id=?";
+        String sql = "SELECT * FROM bookings WHERE id=?";
         Booking b = null; // Object reference
         
         try {
