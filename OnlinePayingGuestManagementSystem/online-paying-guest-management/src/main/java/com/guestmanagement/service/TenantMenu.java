@@ -1,13 +1,39 @@
 package com.guestmanagement.service;
 
+/**
+ * ============================================================
+ * Author : __________________________
+ * ============================================================
+ *
+ * Description :
+ * This class handles all tenant-side operations in the
+ * Paying Guest Management System.
+ * Includes registration, login, room booking,
+ * rent payment, messaging admin, and viewing bookings.
+ *
+ * OOP Concepts Used :
+ * - Class
+ * - Static Methods
+ * - Object Creation
+ * - Encapsulation
+ * - Abstraction
+ * - Conditional Statements
+ * - Loops
+ *
+ * ============================================================
+ */
+
 import com.guestmanagement.model.*;
 import com.guestmanagement.database.*;
 import java.util.ArrayList;
 
+// Class
 public class TenantMenu {
 
+    // Static variable / stores currently logged-in tenant
     static Tenant currentTenant = null;
 
+    // Static method / tenant portal
     public static void show() {
         int choice = -1;
         while (choice != 0) {
@@ -30,6 +56,7 @@ public class TenantMenu {
         }
     }
 
+    // Static method / tenant registration
     static void register() {
         System.out.println("\n\u2795 Tenant Registration");
         String name = Input.readText("Name     : ");
@@ -43,17 +70,21 @@ public class TenantMenu {
         String pass = Input.readText("Password : ");
         String phone = Input.readPhone("Phone (10 digits) : ");
 
+        // Object creation
         Tenant t = new Tenant(0, name, email, pass, phone);
         TenantDB.insert(t);
         System.out.println("  \u2705 Registered successfully!");
     }
 
+    // Static method / tenant login
     static void login() {
         System.out.println("\n\uD83D\uDD10 Tenant Login");
         String email = Input.readEmail("Email    : ");
         String pass = Input.readText("Password : ");
 
         ArrayList<Tenant> list = TenantDB.getAll();
+
+        // Enhanced for loop
         for (Tenant t : list) {
             if (t.email.equals(email) && t.password.equals(pass)) {
                 currentTenant = t;
@@ -61,20 +92,25 @@ public class TenantMenu {
                 return;
             }
         }
+
         System.out.println("  \u274C Wrong email or password.");
         currentTenant = null;
     }
 
+    // Static method / search tenant by email
     static Tenant getTenantByEmail(String email) {
         ArrayList<Tenant> list = TenantDB.getAll();
+
         for (Tenant t : list) {
             if (t.email.equals(email)) {
                 return t;
             }
         }
+
         return null;
     }
 
+    // Static method / tenant main menu
     static void tenantMenu() {
         int choice = -1;
         while (choice != 0) {
@@ -102,23 +138,28 @@ public class TenantMenu {
             else
                 System.out.println("  \u26A0 Invalid choice.");
         }
+
         currentTenant = null;
     }
 
+    // Static method / view available rooms
     static void viewAvailableRooms() {
         System.out.println("\n\uD83D\uDC41 Available Rooms");
         ArrayList<Room> list = RoomDB.getAll();
         boolean found = false;
+
         for (Room r : list) {
             if (r.available) {
                 System.out.println("  " + r);
                 found = true;
             }
         }
+
         if (!found)
             System.out.println("  \uD83D\uDCC2 No rooms available right now.");
     }
 
+    // Static method / book room
     static void bookRoom() {
         viewAvailableRooms();
 
@@ -131,20 +172,23 @@ public class TenantMenu {
             System.out.println("  \u26A0 Room not found!");
             return;
         }
+
         if (!chosen.available) {
             System.out.println("  \u274C Room is already booked!");
             return;
         }
 
+        // Object creation
         Booking b = new Booking(0, currentTenant.id, roomId, date);
         BookingDB.insert(b);
-        
+
         chosen.available = false;
         RoomDB.update(chosen);
 
         System.out.println("  \u2705 Booked! Room: " + chosen.roomNo + " | Rs." + chosen.rent + "/month");
     }
 
+    // Static method / make payment
     static void makePayment() {
         myBookings();
 
@@ -154,6 +198,7 @@ public class TenantMenu {
 
         ArrayList<Booking> bookings = BookingDB.getAll();
         Booking booking = null;
+
         for (Booking b : bookings) {
             if (b.id == bookingId && b.tenantId == currentTenant.id) {
                 booking = b;
@@ -169,30 +214,38 @@ public class TenantMenu {
         Room room = RoomDB.searchById(booking.roomId);
         double rent = (room != null) ? room.rent : 0;
 
+        // Object creation
         Payment p = new Payment(0, bookingId, rent, mode, date);
         PaymentDB.insert(p);
+
         System.out.println("  \u2705 Payment successful! Rs." + rent + " via " + mode);
     }
 
+    // Static method / send message to admin
     static void sendMessage() {
         String text = Input.readText("Your message : ");
         String date = Input.readText("Date         : ");
 
+        // Object creation
         MessageDB m = new MessageDB(0, currentTenant.id, 1, text, date);
         MessageDB.insert(m);
+
         System.out.println("  \u2705 Message sent to admin!");
     }
 
+    // Static method / view tenant bookings
     static void myBookings() {
         System.out.println("\n\uD83D\uDCCB My Bookings");
         ArrayList<Booking> list = BookingDB.getAll();
         boolean found = false;
+
         for (Booking b : list) {
             if (b.tenantId == currentTenant.id) {
                 System.out.println("  " + b);
                 found = true;
             }
         }
+
         if (!found)
             System.out.println("  \uD83D\uDCC5 You have no bookings yet.");
     }
