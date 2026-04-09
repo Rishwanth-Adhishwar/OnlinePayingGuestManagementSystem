@@ -26,7 +26,7 @@ public class Database {
     public static String PORT = "27913";
     public static String DATABASE = "guest_db";
     public static String USER = "avnadmin";
-    public static String PASSWORD = "AVNS_qtP9PXrlBVRWIbjsSIq";
+    public static String PASSWORD = "#";
     
     // Static method / Database connection
     public static Connection connect() {
