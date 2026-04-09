@@ -27,6 +27,7 @@ import java.util.Scanner;
 public class Input {
 
 	// Static object / Scanner class object creation
+
 	static Scanner sc = new Scanner(System.in);
 
 	// Static method / read integer input
