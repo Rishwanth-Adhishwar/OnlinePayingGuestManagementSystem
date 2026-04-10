@@ -18,6 +18,9 @@ import java.util.Scanner;
 
 public class Input {
 
+
+	// Static object / Scanner class object creation
+
 	static Scanner sc = new Scanner(System.in);
 // Read Integer and send to Input Class 
 	public static int readInt(String prompt) {
