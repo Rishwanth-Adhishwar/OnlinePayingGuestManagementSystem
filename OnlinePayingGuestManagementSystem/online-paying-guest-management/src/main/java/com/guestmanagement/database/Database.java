@@ -22,11 +22,11 @@ import java.sql.SQLException;
 public class Database {
     
     // Static variables / Constants for DB configuration
-    public static String HOST = " mysql-313d8acf-guestmanagementsystem-4.j.aivencloud.com";
-    public static String PORT = "27913";
-    public static String DATABASE = "guest_db";
-    public static String USER = "avnadmin";
-    public static String PASSWORD = "AVNS_qtP9PXrlBVRWIbjsSIq";
+    public static String HOST = " #";
+    public static String PORT = "#";
+    public static String DATABASE = "#";
+    public static String USER = "#";
+    public static String PASSWORD = "#";
     
     // Static method / Database connection
     public static Connection connect() {
