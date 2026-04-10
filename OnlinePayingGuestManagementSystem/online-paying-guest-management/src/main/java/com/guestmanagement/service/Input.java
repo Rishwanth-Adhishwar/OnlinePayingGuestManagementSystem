@@ -58,6 +58,7 @@ public class Input {
 
 	// Static method / read valid email
 	public static String readEmail(String prompt) {
+		sc.nextLine();
 		while (true) {
 			System.out.print(prompt);
 			String email = sc.nextLine().trim();
