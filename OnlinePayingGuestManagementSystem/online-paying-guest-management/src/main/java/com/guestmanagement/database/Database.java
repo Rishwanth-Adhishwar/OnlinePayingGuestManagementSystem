@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class Database {
     
     // Static variables / Constants for DB configuration
-    public static String HOST = " #";
+    public static String HOST = "#";
     public static String PORT = "#";
     public static String DATABASE = "#";
     public static String USER = "#";
