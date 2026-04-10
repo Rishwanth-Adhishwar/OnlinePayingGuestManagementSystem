@@ -1,11 +1,25 @@
 package com.guestmanagement.service;
+/**
+ * ============================================================
+ * Author : __________________________
+ * ============================================================
+ *
+ * Description :
+ * This class is used to manage all Input from User 
+ * and perform validation in the Paying Guest Management System.
+ * It includes integer,double String methods to validate
+ * and return true if it is Correct.
+ *
+ * ============================================================
+ */
+
 
 import java.util.Scanner;
 
 public class Input {
 
 	static Scanner sc = new Scanner(System.in);
-
+// Read Integer and send to Input Class 
 	public static int readInt(String prompt) {
 		System.out.print(prompt);
 		while (!sc.hasNextInt()) {
@@ -15,7 +29,7 @@ public class Input {
 		}
 		return sc.nextInt();
 	}
-
+	// Read String(Name,Messges) and send to Input Class
 	public static String readText(String prompt) {
 		System.out.print(prompt);
 		String text = sc.nextLine();
@@ -24,7 +38,7 @@ public class Input {
 		}
 		return text.trim();
 	}
-
+	// Read String(Email) and send to Input Class
 	public static String readEmail(String prompt) {
 		sc.nextLine();
 		while (true) {
@@ -40,7 +54,7 @@ public class Input {
 			System.out.println("  \u26A0 Enter a valid email!");
 		}
 	}
-
+	// Read String(Phone.No) and send to Input Class
 	public static String readPhone(String prompt) {
 		while (true) {
 			System.out.print(prompt);
@@ -51,7 +65,7 @@ public class Input {
 			System.out.println("  \u26A0 Phone must be 10 digits!");
 		}
 	}
-
+	// Read String(Password) and send to Input Class
 	public static String readPassword(String prompt) {
 		while (true) {
 			System.out.print(prompt);
@@ -62,7 +76,7 @@ public class Input {
 			System.out.println("  \u26A0 Password must be at least 4 characters!");
 		}
 	}
-
+	// Read double(Payment) and send to Input Class
 	public static double readDouble(String prompt) {
 		System.out.print(prompt);
 		while (!sc.hasNextDouble()) {
@@ -72,7 +86,7 @@ public class Input {
 		}
 		return sc.nextDouble();
 	}
-
+	// Read Integer(Exit) and send to Input Class
 	public static int readMenu(int max) {
 		int choice = readInt("Enter choice: ");
 		if (choice >= 0 && choice <= max) {
