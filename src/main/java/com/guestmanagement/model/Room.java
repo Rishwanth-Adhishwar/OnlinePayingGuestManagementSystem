@@ -81,6 +81,10 @@ public class Room implements Displayable {
         System.out.println("  Available : " + (available ? "Yes" : "No"));
     }
 
+    private void printHeader() {
+        System.out.println("--- Room Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {

@@ -79,6 +79,10 @@ public class MessageDB implements Displayable {
         System.out.println("  Date    : " + date);
     }
 
+    private void printHeader() {
+        System.out.println("--- MessageDB Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {

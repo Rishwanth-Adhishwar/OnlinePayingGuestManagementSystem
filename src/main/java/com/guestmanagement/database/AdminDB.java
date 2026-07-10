@@ -55,6 +55,10 @@ public class AdminDB extends Person implements Displayable {
         System.out.println("  Email: " + email);
     }
 
+    private void printHeader() {
+        System.out.println("--- Admin Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {

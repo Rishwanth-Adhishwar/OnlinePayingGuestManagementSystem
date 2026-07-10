@@ -71,6 +71,10 @@ public class Payment implements Displayable {
         System.out.println("  Date       : " + date);
     }
 
+    private void printHeader() {
+        System.out.println("--- Payment Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {

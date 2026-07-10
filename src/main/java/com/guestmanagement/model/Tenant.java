@@ -66,6 +66,10 @@ public class Tenant extends Person implements Displayable {
         System.out.println("  Phone: " + phone);
     }
 
+    private void printHeader() {
+        System.out.println("--- Tenant Details ---");
+    }
+
     // Method Overriding - toString from Object class (Polymorphism)
     @Override
     public String toString() {

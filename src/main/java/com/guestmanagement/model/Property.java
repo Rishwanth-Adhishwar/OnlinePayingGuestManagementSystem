@@ -60,6 +60,10 @@ public class Property implements Displayable {
         System.out.println("  Owner   : " + owner);
     }
 
+    private void printHeader() {
+        System.out.println("--- Property Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {

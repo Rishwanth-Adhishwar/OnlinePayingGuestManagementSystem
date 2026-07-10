@@ -60,6 +60,10 @@ public class Booking implements Displayable {
         System.out.println("  Date       : " + date);
     }
 
+    private void printHeader() {
+        System.out.println("--- Booking Details ---");
+    }
+
     // Method Overriding
     @Override
     public String toString() {
